@@ -1,0 +1,6 @@
+{
+    "rateLimiterSettings": {
+        "windowSizeInMillis": 10000,
+        "limit": 3
+    }
+}

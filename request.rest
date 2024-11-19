@@ -1,0 +1,24 @@
+GET http://localhost:3000/data
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImprIiwiaWF0IjoxNzMxODI4MjQ2LCJleHAiOjE3MzE4MzE4NDZ9.recwdowAz37PTHXvxGSZ33klGIYHLbBHQJ42w5bzqmo
+
+###
+GET http://localhost:3000/data/1
+###
+POST http://localhost:3000/data
+Content-Type: application/json
+
+{
+    "id": "3",
+    "Firstname": "New",
+    "Surname": "User"
+}
+###
+GET http://localhost:3000/doc
+###
+POST http://localhost:3000/login
+Content-Type: application/json
+
+{
+    "username": "jk",
+    "password": "sala"
+}

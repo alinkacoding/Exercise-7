@@ -1,0 +1,89 @@
+openapi: 3.1.0
+info:
+  title: Karelia API Programming - OpenAPI 3.1.0 Demonstration
+  description: |-
+    This is a sample OpenAPI OAD.
+    
+    Some useful links:
+    - [Learn OpenAPI](https://learn.openapis.org)
+    - [OpenAPI Specification](https://learn.openapis.org/)
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 0.1.1
+
+# 2) Apply the security globally to all operations
+security:
+  - bearerAuth: []
+
+servers:
+  - url: http://localhost:3000
+  
+tags:
+  - name: Sample dataset
+    description: Everything you need to know about APIs
+    externalDocs:
+      description: Find out more
+      url: https://m.karelia.fi
+
+paths:
+  /data:
+    get:
+      tags:
+        - Sample dataset
+      summary: Returns a dataset
+      description: Returns a dataset with something more blaah...
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Data'
+        '415':
+          description: Unsupported Media Type.
+        '429':
+          description: Too Many Requests.
+  /login:
+    post:
+      tags:
+        - Logging in
+      description: Logs in to the page
+      responses:
+        '200':
+          description: Successful log in
+          content:
+            application/json:
+              schema:
+                type: object
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    Data:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          examples:
+            - 111
+        forename:
+          type: string
+          examples:
+            - Roy
+          
+        surname:
+          type: string
+          examples: [ Fielding ]
+
+  securitySchemes:
+    bearerAuth: # arbitrary name for the security scheme
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
